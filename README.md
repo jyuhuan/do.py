@@ -32,7 +32,7 @@ def lots_of_none_checks():
 
 How do we improve this piece of complicated, error-prone code?
 
-Well, the usual approach is to return `Maybe`s instead of direct values. So we rewrite `step_one` and `step_one` as follows:
+Well, the usual approach is to return `Maybe`s instead of direct values. So we rewrite `step_one` and `step_two` as follows:
 
 ```py
 def step_one():
@@ -70,7 +70,7 @@ def do_without_none_checks(x):
 final_result = do_without_none_checks(6)
 ```
 
-Of course, if you really want a pure and consistent experience, you may want to rewrite `step_one` and `step_one` as: 
+Of course, if you really want a pure and consistent experience, you may want to rewrite `step_one` and `step_two` as: 
 
 ```py
 @do(Maybe)
