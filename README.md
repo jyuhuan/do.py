@@ -88,4 +88,4 @@ Unlike Python 3, in Python 2, a generator (that is, any function that uses the k
 ## Roadmap
 - [ ] Write tests
 - [ ] Publish on PyPI
-
+- [ ] Make available for both Python 2 and 3
