@@ -20,4 +20,9 @@ def do(m):
             return do_impl(f, m, *args, **kwargs)
         return g
     return wrapper
-    
+
+
+class Return(Exception):
+    def __init__(self, value):
+        super(Return, self).__init__()
+        self.value = value
