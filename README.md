@@ -3,7 +3,7 @@ A do-notation decoration for Python.
 
 
 ## Sample Usage
-Imagine you're writing a function that does two steps:
+Imagine you're writing a function that does three steps:
 - Call `step_one()`, which may return a number or `None`.
 - If the call above didn't return a `None`, call `step_two()`, which depends on the returned number. Again, `step_two()` may return a number or `None`.
 - Finally, if the call above didn't return a `None`, return the sum of 100 with the returned number.
@@ -45,16 +45,20 @@ def step_two(n):
 Now we can write the code without all the `None`-checks like this:
 
 ```py
-step_one().flat_map(lambda result_one: step_two(result_one).flat_map(lambda result_two: 100 + result_two))
+step_one().flat_map(
+    lambda result_one: step_two(result_one).flat_map(
+        lambda result_two: 100 + result_two
+    )
+)
 ```
 
 This kind of code is usually referred to as "callback hell" by JavaScript users.
 
-How do we avoid callback hell, then?
+How do we avoid the callback hell, then?
 
 Introducing the decorator `@do`!
 
-Here's how you would write the same code more elegantly:
+Here's how we could write the same code more elegantly with `@do`:
 
 ```py
 @do(Maybe)
@@ -78,5 +82,10 @@ def step_two():
     raise Return(2)
 ```
 
-## What's `raise Return`
+## What's `raise Return`?
 Unlike Python 3, in Python 2, a generator (that is, any function that uses the keyword `yield` in its body) cannot have a `return` statement. This is a practice borrowed from [Tornado](https://github.com/tornadoweb/tornado). `raise Return` is a work around this limitation.
+
+## Roadmap
+- [ ] Write tests
+- [ ] Publish on PyPI
+
