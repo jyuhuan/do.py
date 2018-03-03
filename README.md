@@ -68,6 +68,7 @@ def do_elegantly(x):
     result_two = yield step_two()
     raise Return(result_two)
 
+# Note that `final_result` is still a `Maybe`.
 final_result = do_without_none_checks(6)
 ```
 
