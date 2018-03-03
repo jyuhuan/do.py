@@ -45,11 +45,12 @@ def step_two(n):
 Now we can write the code without all the `None`-checks like this:
 
 ```py
-step_one().flat_map(
-    lambda result_one: step_two(result_one).flat_map(
-        lambda result_two: 100 + result_two
+def lots_of_flat_maps():
+    step_one().flat_map(
+        lambda result_one: step_two(result_one).flat_map(
+            lambda result_two: 100 + result_two
+        )
     )
-)
 ```
 
 This kind of code is usually referred to as "callback hell" by JavaScript users.
@@ -62,7 +63,7 @@ Here's how we could write the same code more elegantly with `@do`:
 
 ```py
 @do(Maybe)
-def do_without_none_checks(x):
+def do_elegantly(x):
     result_one = yield step_one()
     result_two = yield step_two()
     raise Return(result_two)
