@@ -5,7 +5,7 @@ A do-notation decoration for Python.
 ## Sample Usage
 Imagine you're writing a function that does three steps:
 - Call `step_one()`, which may return a number or `None`.
-- If the call above didn't return a `None`, call `step_two()`, which depends on the returned number. Again, `step_two()` may return a number or `None`.
+- If the call above didn't return a `None`, call `step_two(n)`, which depends on the previously returned number. Again, `step_two()` may return a number or `None`.
 - Finally, if the call above didn't return a `None`, return the sum of 100 with the returned number.
 
 A typical implementation of this function
@@ -68,7 +68,7 @@ def do_elegantly(x):
     result_two = yield step_two()
     raise Return(result_two)
 
-# Note that `final_result` is still a `Maybe`.
+# Note that final_result is still a Maybe.
 final_result = do_without_none_checks(6)
 ```
 
