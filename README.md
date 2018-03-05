@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/jyuhuan/do.py.svg?branch=master)](https://travis-ci.org/jyuhuan/do.py)
+[![Code Coverage](https://codecov.io/github/jyuhuan/do.py/coverage.svg?branch=master)](https://codecov.io/gh/jyuhuan/do.py?branch=master)
 
 # do.py
 A do-notation decoration for Python.
