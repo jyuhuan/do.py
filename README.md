@@ -2,10 +2,11 @@
 [![Code Coverage](https://codecov.io/github/jyuhuan/do.py/coverage.svg?branch=master)](https://codecov.io/gh/jyuhuan/do.py?branch=master)
 
 # do.py
-A do-notation decoration for Python.
+A do-notation decorator for Python.
 
 
 ## Sample Usage
+
 Imagine you're writing a function that does three steps:
 - Call `step_one()`, which may return a number or `None`.
 - If the call above didn't return a `None`, call `step_two(n)`, which depends on the previously returned number. Again, `step_two()` may return a number or `None`.
@@ -19,7 +20,7 @@ def step_one():
     # Returning 1 as an example
     return 1
 
-def step_one(n):
+def step_two(n):
     # Might return None in some cases
     # Returning n + 1 as an example
     return n + 1
@@ -72,7 +73,7 @@ def do_elegantly(x):
     raise Return(result_two)
 
 # Note that final_result is still a Maybe.
-final_result = do_without_none_checks(6)
+final_result = do_elegantly(6)
 ```
 
 Of course, if you really want a pure and consistent experience, you may want to rewrite `step_one` and `step_two` as: 
@@ -91,6 +92,5 @@ def step_two():
 Unlike Python 3, in Python 2, a generator (that is, any function that uses the keyword `yield` in its body) cannot have a `return` statement. This is a practice borrowed from [Tornado](https://github.com/tornadoweb/tornado). `raise Return` is a work around this limitation.
 
 ## Roadmap
-- [ ] Write tests
 - [ ] Publish on PyPI
 - [ ] Make available for both Python 2 and 3
