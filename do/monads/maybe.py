@@ -1,27 +1,10 @@
-class Monad(object):
-
-    @classmethod
-    def id(cls, value):
-        raise NotImplementedError()
-
-    def flat_map(self, f):
-        raise NotImplementedError()
-
-
-class Maybe(Monad):
+class Maybe(object):
 
     def get(self):
         raise NotImplementedError()
 
-    @classmethod
-    def id(cls, value):
-        return Just(value)
-
     def flat_map(self, f):
-        if isinstance(self, Nothing):
-            return self
-        else:
-            return f(self.get())
+        return self if isinstance(self, Nothing) else f(self.get())
 
 
 class Just(Maybe):
