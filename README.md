@@ -1,4 +1,6 @@
-# do.py [![Build Status](https://travis-ci.org/jyuhuan/do.py.svg?branch=master)](https://travis-ci.org/jyuhuan/do.py)
+[![Build Status](https://travis-ci.org/jyuhuan/do.py.svg?branch=master)](https://travis-ci.org/jyuhuan/do.py)
+
+# do.py
 A do-notation decoration for Python.
 
 

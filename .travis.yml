@@ -2,7 +2,11 @@ language: python
 python:
   - "2.7"
 
-install: []
+install:
+  - pip install codecov
 
 script:
   - python -m pytest tests/
+
+after_success:
+  - codecov
