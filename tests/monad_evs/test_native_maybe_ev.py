@@ -1,9 +1,9 @@
-from unittest import TestCase
 from do.monad_evs.native_maybe_ev import NativeMaybeEv
 from do.syntax import do, Return
+from tests.monad_evs.monad_ev_test_case import MonadEvTestCase
 
 
-class TestNativeMaybe(TestCase):
+class TestNativeMaybe(MonadEvTestCase):
 
     def test_id(self):
         ev = NativeMaybeEv()
@@ -21,7 +21,7 @@ class TestNativeMaybe(TestCase):
         y = ev.flat_map(None, lambda s: len(s))
         self.assertEquals(y, None)
 
-    def test_using_native_maybe_in_do(self):
+    def test_usage_with_do(self):
 
         @do(NativeMaybeEv)
         def use_native_maybe_1():
