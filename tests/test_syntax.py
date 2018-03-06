@@ -1,6 +1,6 @@
 from unittest import TestCase
 
-from do.monads import Maybe, Iterable
+from do.monads import MaybeMonad, IterableMonad
 from do.syntax import do, Return
 from do.exceptions import NoReturnException
 
@@ -13,7 +13,7 @@ class TestDo(TestCase):
         Since this is not allowed, an exception is expected.
         """
 
-        @do(Maybe)
+        @do(MaybeMonad)
         def no_return():
             pass
 
@@ -25,7 +25,7 @@ class TestDo(TestCase):
         do-routine.
         """
 
-        @do(Maybe)
+        @do(MaybeMonad)
         def direct_return(x):
             raise Return(x)
 
@@ -38,11 +38,11 @@ class TestDo(TestCase):
         returns a value.
         """
 
-        @do(Maybe)
+        @do(MaybeMonad)
         def f(x):
             raise Return(x + 1)
 
-        @do(Maybe)
+        @do(MaybeMonad)
         def yield_and_return(x):
             y = yield f(x)
             z = y + 1
@@ -50,4 +50,4 @@ class TestDo(TestCase):
 
         m = yield_and_return(1)
 
-        self.assertEquals(m, 3)
+        self.assertEqual(m, 3)
