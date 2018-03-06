@@ -2,7 +2,7 @@ from collections import Iterable
 
 from tests.monad_evs.monad_ev_test_case import MonadEvTestCase
 
-from do.monad_evs.iterable import IterableEv
+from do.monad_evs import IterableEv
 from do.syntax import do, Return
 
 

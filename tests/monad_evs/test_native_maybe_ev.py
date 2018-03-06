@@ -1,4 +1,4 @@
-from do.monad_evs.native_maybe_ev import NativeMaybeEv
+from do.monad_evs import NativeMaybeEv
 from do.syntax import do, Return
 from tests.monad_evs.monad_ev_test_case import MonadEvTestCase
 

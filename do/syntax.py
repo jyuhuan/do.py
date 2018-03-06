@@ -4,7 +4,7 @@ from do.exceptions import NoReturnException
 def do(m):
     def wrapper(f):
         def g(*args, **kwargs):
-            return _do_impl(f, m(), *args, **kwargs)
+            return _do_impl(f, m, *args, **kwargs)
         return g
     return wrapper
 
