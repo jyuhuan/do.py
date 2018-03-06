@@ -1,6 +1,5 @@
 from collections import Iterable
 
-from do.monad_evs.list_ev import ListEv
 from tests.monad_evs.monad_ev_test_case import MonadEvTestCase
 
 from do.monad_evs.iterable import IterableEv
