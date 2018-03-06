@@ -97,7 +97,7 @@ Unlike Python 3, in Python 2, a generator (that is, any function that uses the k
 ## Related Work
 The `@do` decorator of do.py works the same way as the `Do.Multi` function in [*Fantasy Do*](fantasy-do-repo), a JavaScript library which implements the do-notation using JavaScript's generators. However, the decorator mechanism of Python gives `@do` a neater syntax.
 
-The approach proposed by the blog post [*Monads in Python (with nice syntax!)*] (python-do-blog) is the closest to do.py in terms of syntax. However, that approach only supports a subset of monads. Specifically, any monad in which the `flat_map(m, f)` method invokes the `f` argument more than one time is not supported (e.g., list monads). In do.py, this is not a problem.
+The approach proposed by the blog post [*Monads in Python (with nice syntax!)*](python-do-blog) is the closest to do.py in terms of syntax. However, that approach only supports a subset of monads. Specifically, any monad in which the `flat_map(m, f)` method invokes the `f` argument more than one time is not supported (e.g., list monads). In do.py, this is not a problem.
 
 ## Roadmap
 - [ ] Publish on PyPI
