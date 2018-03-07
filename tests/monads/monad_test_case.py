@@ -1,9 +1,9 @@
 from unittest import TestCase
 
 
-class MonadEvTestCase(TestCase):
+class MonadTestCase(TestCase):
     """
-    Any Monad evidence class will have to be tested using this base test.
+    Any Monad typeclass will have to be tested using this base test.
     """
 
     def test_id(self): pass

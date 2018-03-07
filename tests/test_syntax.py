@@ -1,7 +1,6 @@
 from unittest import TestCase
 
-from do.monads.maybe import Just
-from do.monad_evs.maybe_ev import MaybeEv
+from do.monads import MaybeMonad, IterableMonad
 from do.syntax import do, Return
 from do.exceptions import NoReturnException
 
@@ -14,7 +13,7 @@ class TestDo(TestCase):
         Since this is not allowed, an exception is expected.
         """
 
-        @do(MaybeEv)
+        @do(MaybeMonad)
         def no_return():
             pass
 
@@ -25,13 +24,13 @@ class TestDo(TestCase):
         Tests a do-routine which directly returns a value without yielding other
         do-routine.
         """
-        @do(MaybeEv)
+
+        @do(MaybeMonad)
         def direct_return(x):
             raise Return(x)
 
         m = direct_return(5)
-        self.assertIsInstance(m, Just)
-        self.assertEqual(m.get(), 5)
+        self.assertEqual(m, 5)
 
     def test_yield_and_return(self):
         """
@@ -39,11 +38,11 @@ class TestDo(TestCase):
         returns a value.
         """
 
-        @do(MaybeEv)
+        @do(MaybeMonad)
         def f(x):
             raise Return(x + 1)
 
-        @do(MaybeEv)
+        @do(MaybeMonad)
         def yield_and_return(x):
             y = yield f(x)
             z = y + 1
@@ -51,5 +50,4 @@ class TestDo(TestCase):
 
         m = yield_and_return(1)
 
-        self.assertIsInstance(m, Just)
-        self.assertEquals(m.get(), 3)
+        self.assertEqual(m, 3)

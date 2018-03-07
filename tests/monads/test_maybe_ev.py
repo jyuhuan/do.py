@@ -1,29 +1,26 @@
-from do.monad_evs.native_maybe_ev import NativeMaybeEv
+from do.monads import MaybeMonad
 from do.syntax import do, Return
-from tests.monad_evs.monad_ev_test_case import MonadEvTestCase
+from tests.monads.monad_test_case import MonadTestCase
 
 
-class TestNativeMaybe(MonadEvTestCase):
+class TestMaybe(MonadTestCase):
 
     def test_id(self):
-        ev = NativeMaybeEv()
-        x = ev.id('hello')
+        x = MaybeMonad.id('hello')
         self.assertIsInstance(x, str)
         self.assertEquals(x, 'hello')
 
     def test_flat_map(self):
-        ev = NativeMaybeEv()
-
-        x = ev.flat_map('hello', lambda s: len(s))
+        x = MaybeMonad.flat_map('hello', lambda s: len(s))
         self.assertIsInstance(x, int)
         self.assertEquals(x, 5)
 
-        y = ev.flat_map(None, lambda s: len(s))
+        y = MaybeMonad.flat_map(None, lambda s: len(s))
         self.assertEquals(y, None)
 
     def test_usage_with_do(self):
 
-        @do(NativeMaybeEv)
+        @do(MaybeMonad)
         def use_native_maybe_1():
             a = yield 5
             b = yield 4
@@ -32,7 +29,7 @@ class TestNativeMaybe(MonadEvTestCase):
         c = use_native_maybe_1()
         self.assertEquals(c, 9)
 
-        @do(NativeMaybeEv)
+        @do(MaybeMonad)
         def use_native_maybe_2():
             a = yield 5
             b = yield None
